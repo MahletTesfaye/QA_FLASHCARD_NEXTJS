@@ -16,7 +16,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header className="navigation">
+          <div className="w-full h-32 bg-gray-500 "></div>
+        </header>
+        <div className="flex justify-around mt-16">
+          {children}
+          <div className="w-60 h-[100] bg-gray-400"></div>
+        </div>
+        <footer className=" bg-gray-700 text-white p-10 mt-16">
+          <div className="flex justify-around gap-16 mb-3">
+            <div className=""> Trending Fintech Ecommerce Telecom Startup</div>
+            <div className="">Public Relations Advertise with us</div>
+            <div className="">About About Us Our Team Contact Us</div>
+            <div className="">Legal Privacy Policy Terms of Service Disclosure</div>
+            <div className=""> Connect to us on:</div>
+          </div>
+          Copyright © 2024 Shega Media & Technology PLC</footer>
+      </body>
     </html>
   );
 }
