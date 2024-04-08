@@ -20,12 +20,12 @@ export default function RootLayout({
         <header className="navigation">
           <div className="w-full h-32 bg-gray-500 "></div>
         </header>
-        <div className="flex flex-col md:flex-row justify-around mt-16">
+        <div className="flex flex-col md:flex-row justify-around m-[5%]">
           {children}
-          <div className="w-60 h-60 bg-gray-400"></div>
+          <div className="w-60 h-[100] bg-gray-400"></div>
         </div>
         <footer className=" bg-gray-700 text-white p-10 mt-16">
-          <div className="flex justify-around gap-16 mb-3">
+          <div className="flex flex-col md:flex-row justify-around gap-16 mb-3">
             <div className=""> Trending Fintech Ecommerce Telecom Startup</div>
             <div className="">Public Relations Advertise with us</div>
             <div className="">About About Us Our Team Contact Us</div>
