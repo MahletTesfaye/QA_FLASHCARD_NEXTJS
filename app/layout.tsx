@@ -20,7 +20,7 @@ export default function RootLayout({
         <header className="navigation">
           <div className="w-full h-32 bg-gray-500 "></div>
         </header>
-        <div className="flex flex-col md:flex-row justify-around m-[5%]">
+        <div className="flex flex-col md:flex-row justify-around mt-[5%]">
           {children}
           <div className="w-60 h-[100] bg-gray-400"></div>
         </div>
