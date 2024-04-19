@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { PiShuffleAngularBold } from "react-icons/pi";
 import Flashcard from "@/components/flashcard";
-import Link from "next/link";
 
 export default function Home(props: any) {
   const [isLoadMore, setisLoadMore] = useState(false)
@@ -30,7 +29,6 @@ export default function Home(props: any) {
   }, [])
   return (
     <main>
-      <Link href={'/AdminPage'} className="flex justify-end text-sm text-[var(--backgroundPrimary)]">Admin</Link>
       <div className="flex flex-col border p-[4%]">
         <div className="flex justify-between">
           <pre className="text-lg flex flex-col md:flex-row">Question & Answer<pre className="text-[var(--backgroundPrimary)]"> Flashcards</pre></pre>
