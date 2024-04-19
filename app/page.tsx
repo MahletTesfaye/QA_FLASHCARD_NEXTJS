@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { PiShuffleAngularBold } from "react-icons/pi";
 import Flashcard from "@/components/flashcard";
+import { MdOutlineExpandLess, MdOutlineExpandMore } from "react-icons/md";
 
 export default function Home(props: any) {
   const [isLoadMore, setisLoadMore] = useState(false)
@@ -27,26 +28,26 @@ export default function Home(props: any) {
     }
     getdata();
   }, [])
+
   return (
-    <main>
-      <div className="flex flex-col border p-[4%]">
-        <div className="flex justify-between">
-          <pre className="text-lg flex flex-col md:flex-row">Question & Answer<pre className="text-[var(--backgroundPrimary)]"> Flashcards</pre></pre>
-          <PiShuffleAngularBold size={18} onClick={handleShuffle} className="cursor-pointer hover:scale-125" title='shuffle' />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-around gap-10 items-center">
-          {
-            shuffledData?.map((item: any, index: number) => {
-              return <>
-                {
-                  (isLoadMore ? item : index < 6) && <Flashcard key={item.id} question={item.question} answer={item.answer} />
-                }
-              </>
-            })
-          }
-        </div>
-        <div onClick={handleLoadMore} className={`text-center pt-4 cursor-pointer opacity-80 ${isLoadMore ? 'hidden' : ''}`}>Load more...</div>
-        <div onClick={handleLoadMore} className={`text-center pt-4 cursor-pointer opacity-80 ${isLoadMore ? '' : 'hidden'}`}>Show less...</div>
+    <main className="mx-[3%]">
+      <div className="flex justify-between items-center">
+        <div className="sm:text-2xl flex flex-col md:flex-row font-bold">Question & Answer<p className="text-[var(--backgroundPrimary)]">&nbsp;Flashcards</p></div>
+        <PiShuffleAngularBold size={18} onClick={handleShuffle} className="cursor-pointer hover:scale-110 align-center" title='shuffle' />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-around gap-10 items-center">
+        {
+          shuffledData?.map((item: any, index: number) => {
+            return <>
+              {
+                (isLoadMore ? item : index < 6) && <Flashcard key={item.id} question={item.question} answer={item.answer} />
+              }
+            </>
+          })
+        }
+      </div>
+      <div className="w-full items-center flex justify-center">
+        <div onClick={handleLoadMore} className={'pt-5 w-fit flex cursor-pointer'}>{isLoadMore ? (<><div>Show less</div><MdOutlineExpandLess size={25} /></>) : (<><div>Show more</div><MdOutlineExpandMore size={25} /></>)}</div>
       </div>
     </main >
   );
