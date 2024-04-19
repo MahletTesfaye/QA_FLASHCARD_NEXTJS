@@ -10,8 +10,8 @@ export default function Home(props: any) {
   const handleLoadMore = () => {
     setisLoadMore(!isLoadMore)
   }
-  const handleShuffle = (data: any) => {
-    setShuffledData([...data].sort(() => Math.random() - 0.5))
+  const handleShuffle = () => {
+    setShuffledData([...shuffledData].sort(() => Math.random() - 0.5))
   }
   useEffect(() => {
     const getdata = async () => {
@@ -34,7 +34,7 @@ export default function Home(props: any) {
       <div className="flex flex-col border p-[4%]">
         <div className="flex justify-between">
           <pre className="text-lg flex flex-col md:flex-row">Question & Answer<pre className="text-[var(--backgroundPrimary)]"> Flashcards</pre></pre>
-          <PiShuffleAngularBold size={18} onClick={(): void => handleShuffle(data)} className="cursor-pointer hover:scale-125" title='shuffle' />
+          <PiShuffleAngularBold size={18} onClick={handleShuffle} className="cursor-pointer hover:scale-125" title='shuffle' />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-around gap-10 items-center">
           {

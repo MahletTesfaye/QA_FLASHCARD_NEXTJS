@@ -13,7 +13,13 @@ const Flashcard = (props: any) => {
     const [isLiked, setIsLiked] = useState(false)
 
     const handleFlip = () => {
-        setisFlipped((prevIsFlipped) => (!prevIsFlipped))
+        if (window.speechSynthesis) {
+            setisFlipped((prevIsFlipped) => (!prevIsFlipped))
+            isFlipped && window.speechSynthesis.cancel()
+        }
+        else {
+            console.log("Speach synthesis utterance is not supported in this browser!")
+        }
     }
     const handleLike = () => {
         setIsLiked((prevIsLiked) => (!prevIsLiked))
@@ -23,14 +29,9 @@ const Flashcard = (props: any) => {
         speechSynthesis.speak(speechSynthesisUtterance);
     };
 
-    const speakQuestion = (e: any) => {
+    const speakAll = (e: any) => {
         e.stopPropagation();
-        speakText(props.question);
-    };
-
-    const speakAnswer = (e: any) => {
-        e.stopPropagation();
-        speakText(props.answer);
+        isFlipped ? speakText(props.answer) : speakText(props.question);
     };
     return (
         <div className="flex flex-col duration-500 hover:scale-105 cursor-pointer items-center ">
@@ -39,7 +40,7 @@ const Flashcard = (props: any) => {
                     <div className="border-2 border-[var(--backgroundSecondary)] shadow-md hover:shadow-lg h-96 w-56 pt-3 px-3 mb-1 mt-6 rounded-2xl bg-white ">
                         <div className="flex justify-between ">
                             <RiQuestionnaireFill color="gray" size={18} className='cursor-default' onClick={(e) => e.stopPropagation()} />
-                            <HiSpeakerWave size={18} onClick={speakQuestion} title='speaker' />
+                            <HiSpeakerWave size={18} onClick={speakAll} title='speaker' />
                         </div>
                         <div className="flex items-center h-[75%] justify-center">
                             <div className="text-center">{props.question}</div>
@@ -50,7 +51,7 @@ const Flashcard = (props: any) => {
                     <div className="border-2 border-[var(--backgroundSecondary)] shadow-md hover:shadow-lg h-96 w-56 pt-3 px-3 mb-3 mt-6 rounded-2xl bg-white">
                         <div className="flex justify-between ">
                             <SiAnswer color='gray' size={16} className='cursor-default' onClick={(e) => e.stopPropagation()} />
-                            <HiSpeakerWave size={18} onClick={speakAnswer} title='speaker' />
+                            <HiSpeakerWave size={18} onClick={speakAll} title='speaker' />
                         </div>
                         <div className="flex items-center h-[80%] justify-center">
                             <div className="text-center">{props.answer}</div>

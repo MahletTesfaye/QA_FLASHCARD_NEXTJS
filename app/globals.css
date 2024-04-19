@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
-    --backgroundPrimary: #FAA31B
+    --backgroundPrimary: #FAA31B;
+    --backgroundSecondary: #13213B;
+
 }
 .card {
     transform-style: preserve-3d;
