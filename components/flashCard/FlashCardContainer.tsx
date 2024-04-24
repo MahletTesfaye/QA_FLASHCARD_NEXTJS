@@ -42,23 +42,22 @@ export default function FlashCardContainer({ data, categoryData }: any) {
     return (
         <>
             {isLoading ? <LoadingPage /> :
-                <main className="mx-[3%] flex flex-col text-center sm:text-start">
+                <main className="mx-[3%] flex flex-col">
                     <div className="flex flex-col sm:flex-row justify-between mr-4 mb-4">
                         <div className="w-full flex flex-col gap-y-5">
-                            <div className="flex w-full justify-center sm:justify-start">
-                                <p className="sm:text-xl md:text-2xl lg:text-4xl flex font-extrabold">
+                            <div className="flex w-full">
+                                <p className="sm:text-xl md:text-2xl lg:text-4xl flex font-extrabold ml-[7%] sm:ml-0">
                                     Question & Answer<span className="text-[var(--backgroundPrimary)]">&nbsp;Flashcards</span>
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row justify-between gap-5 sm:gap-0 items-center w-full">
-                                <p className="container">Flip or click the flashcards to view the answer.</p>
+                                <p className="ml-[7%] sm:ml-0">Flip or click the flashcards to view the answer.</p>
                                 <div className="flex sm:gap-5 items-center w-full sm:w-auto justify-around">
                                     <select
                                         name="Category"
                                         title="Category"
                                         onChange={handleCategoryChange}
-                                        className="border shadow rounded-md px-2 py-1 text-sm cursor-pointer bg-transparent focus:outline-none "
-                                        style={{ width: "max-content" }}
+                                        className="border shadow rounded-md px-2 py-1 text-sm cursor-pointer bg-transparent focus:outline-none font-semibold"
                                     >
                                         <option value="All Cards">All Cards</option>
                                         {categoryData &&
@@ -90,16 +89,16 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                     </div>
                     {filteredData.length > 6 &&
                         <div className="w-full flex justify-center text-[var(--backgroundSecondary)]">
-                            <div onClick={handleShowMore} className={"pt-5 flex cursor-pointer"}>
+                            <div onClick={handleShowMore} className={"py-8 flex cursor-pointer"}>
                                 {isShowMore ? (
                                     <>
-                                        <div>Show less</div>
-                                        <MdOutlineExpandLess size={23} />
+                                        <div className="font-semibold">Show less</div>
+                                        <MdOutlineExpandLess size={23} className="mt-0.5"/>
                                     </>
                                 ) : (
                                     <>
-                                        <div>Show more</div>
-                                        <MdOutlineExpandMore size={23} />
+                                        <div className="font-semibold">Show more</div>
+                                        <MdOutlineExpandMore size={23} className="mt-0.5" />
                                     </>
                                 )}
                             </div>
