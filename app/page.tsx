@@ -62,31 +62,39 @@ export default function Home(props: any) {
   return (
     <>
       {isLoading ? <LoadingPage /> :
-        <main className="mx-[3%]">
-          <div className="flex flex-col sm:flex-row justify-between mr-4">
-            <div className="sm:text-lg md:text-xl lg:text-2xl flex font-bold">
-              Question & Answer<p className="text-[var(--backgroundPrimary)]">&nbsp;Flashcards</p>
-            </div>
-            <div className="flex sm:gap-3 items-center w-full sm:w-auto justify-around">
-              <select
-                name="Category"
-                title="Category"
-                onChange={handleCategoryChange}
-                className="border shadow rounded-md px-2 py-1 text-sm cursor-pointer bg-transparent focus:outline-none "
-                style={{ width: "max-content" }}
-              >
-                <option value="All Cards">All Cards</option>
-                <option value="Tech">Tech</option>
-                <option value="Startup">Startup</option>
-                <option value="Article">Article</option>
-              </select>
+        <main className="mx-[3%] flex flex-col text-center sm:text-start">
+          <div className="flex flex-col sm:flex-row justify-between mr-4 mb-4">
+            <div className="w-full flex flex-col gap-y-5">
+              <div className="flex w-full justify-center sm:justify-start">
+                <p className="sm:text-xl md:text-2xl lg:text-4xl flex font-extrabold">
+                  Question & Answer<span className="text-[var(--backgroundPrimary)]">&nbsp;Flashcards</span>
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row justify-between items-center w-full">
+                <p className="container">Flip or click the flashcards to view the answer.</p>
+                <div className="flex sm:gap-3 items-center w-full sm:w-auto justify-around">
+                  <select
+                    name="Category"
+                    title="Category"
+                    onChange={handleCategoryChange}
+                    className="border shadow rounded-md px-2 py-1 text-sm cursor-pointer bg-transparent focus:outline-none "
+                    style={{ width: "max-content" }}
+                  >
+                    <option value="All Cards">All Cards</option>
+                    <option value="Tech">Tech</option>
+                    <option value="Startup">Startup</option>
+                    <option value="Article">Article</option>
+                    <option value="Other">Other</option>
+                  </select>
 
-              <PiShuffleAngularBold
-                size={18}
-                onClick={handleShuffle}
-                className="cursor-pointer hover:scale-110 align-center"
-                title="shuffle"
-              />
+                  <PiShuffleAngularBold
+                    size={18}
+                    onClick={handleShuffle}
+                    className="cursor-pointer hover:scale-110 align-center"
+                    title="shuffle"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-around gap-10 items-center">

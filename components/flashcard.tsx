@@ -3,8 +3,6 @@ import { BiLike } from 'react-icons/bi';
 import { HiSpeakerWave } from "react-icons/hi2";
 
 const Flashcard = (props: any) => {
-  const show = "Show Answer";
-  const hide = "Hide Answer";
   const [isFlipped, setisFlipped] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -65,12 +63,6 @@ const Flashcard = (props: any) => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex gap-1 cursor-pointer justify-center items-center mt-3 ">
-        <button onClick={handleFlip} className="border items-center text-white px-7 py-0.5 text-sm rounded-md bg-[var(--backgroundPrimary)]">
-          {isFlipped ? hide : show}
-        </button>
-        <BiLike size={22} onClick={handleLike} title='like' color={isLiked ? 'red' : 'inherit'} />
       </div>
     </div>
   );
