@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { HiSpeakerWave } from "react-icons/hi2";
+
 interface FlashcardProps {
   data: {
     id: string,
@@ -9,7 +10,6 @@ interface FlashcardProps {
     category: string
   }
 }
-
 const Flashcard = ({ data }: FlashcardProps) => {
   const [isFlipped, setisFlipped] = useState(false);
 
@@ -33,10 +33,10 @@ const Flashcard = ({ data }: FlashcardProps) => {
   };
 
   return (
-    <div className="flex flex-col duration-500 hover:scale-105 cursor-pointer items-center">
-      <div onClick={handleFlip} className={`card relative mt-5 ${isFlipped ? 'cardFlip' : ''}`}>
-        <div className="card-front absolute top-0">
-          <div className="flex flex-col bg-gray-50 shadow-md hover:shadow-lg border h-80 w-60 pt-3 px-3 rounded-2xl">
+    <div className="col-span-1 flex duration-500 hover:scale-105 cursor-pointer h-full w-full justify-center">
+      <div onClick={handleFlip} className={`card relative ${isFlipped ? 'cardFlip' : ''}`}>
+        <div className="card-front absolute top-0 self-center">
+          <div className="flex flex-col bg-gray-50 shadow-md hover:shadow-lg border h-80 w-64 pt-3 px-3 rounded-2xl">
             <div className="flex justify-end">
               <HiSpeakerWave size={15} onClick={speakAll} title='speaker' />
             </div>
@@ -46,7 +46,7 @@ const Flashcard = ({ data }: FlashcardProps) => {
           </div>
         </div>
         <div className="card-back">
-          <div className="flex flex-col bg-gray-50 shadow-md hover:shadow-lg border h-80 w-60 pt-3 px-3 rounded-2xl">
+          <div className="flex flex-col bg-gray-50 shadow-md hover:shadow-lg border h-80 w-64 pt-3 px-3 rounded-2xl">
             <div className="flex justify-end ">
               <HiSpeakerWave size={15} onClick={speakAll} title='speaker' />
             </div>

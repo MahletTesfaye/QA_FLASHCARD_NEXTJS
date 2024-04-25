@@ -4,6 +4,7 @@ import { PiShuffleAngularBold } from "react-icons/pi";
 import { MdOutlineExpandLess, MdOutlineExpandMore } from "react-icons/md";
 import Flashcard from "./flashcard";
 import LoadingPage from "@/app/loading";
+import { fetchDataWithCategory } from "../fetchCards";
 
 export default function FlashCardContainer({ data, categoryData }: any) {
     const [isLoading, setIsLoading] = useState(true);
@@ -19,20 +20,23 @@ export default function FlashCardContainer({ data, categoryData }: any) {
         setshuffled([...filteredData].sort(() => Math.random() - 0.5));
     };
 
-    const handleCategoryChange = (event: any) => {
-        const selectedCategory = event.target.value
-        let newFilteredData = [];
+    const handleCategoryChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedCategory = event.target.value;
 
         if (selectedCategory === "All Cards") {
-            newFilteredData = data;
+            setFilteredData(data);
+            setshuffled(data);
         } else {
-            newFilteredData = data.filter(
-                (item: any) => item.category === selectedCategory
-            );
+            try {
+                const response = await fetchDataWithCategory(selectedCategory);
+                setFilteredData(response);
+                setshuffled(response);
+            } catch (error) {
+                console.error(error);
+            }
         }
-        setFilteredData(newFilteredData);
-        setshuffled(newFilteredData)
     };
+
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
@@ -42,16 +46,16 @@ export default function FlashCardContainer({ data, categoryData }: any) {
     return (
         <>
             {isLoading ? <LoadingPage /> :
-                <main className="mx-[3%] flex flex-col">
-                    <div className="flex flex-col sm:flex-row justify-between mr-4 mb-4">
-                        <div className="w-full flex flex-col gap-y-5">
-                            <div className="flex w-full">
-                                <p className="sm:text-xl md:text-2xl lg:text-4xl flex font-extrabold ml-[7%] sm:ml-0">
+                <main className=" flex flex-col">
+                    <div className="flex flex-col sm:flex-row justify-between mb-7">
+                        <div className="w-full flex flex-col gap-y-5 px-2 sm:mx-[2%]">
+                            <div className="flex w-full justify-center sm:justify-start ">
+                                <p className="text-lg sm:text-2xl lg:text-4xl flex font-extrabold">
                                     Question & Answer<span className="text-[var(--backgroundPrimary)]">&nbsp;Flashcards</span>
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row justify-between gap-5 sm:gap-0 items-center w-full">
-                                <p className="ml-[7%] sm:ml-0">Flip or click the flashcards to view the answer.</p>
+                                <p className="">Flip or click the flashcards to view the answer.</p>
                                 <div className="flex sm:gap-5 items-center w-full sm:w-auto justify-around">
                                     <select
                                         name="Category"
@@ -76,24 +80,24 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-around gap-10 mx-2 items-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-between gap-y-16">
                         {shuffled?.map((item: any, index: number) => {
                             return (
                                 <>
-                                    {(isShowMore ? item : index < 6) && (
+                                    {(isShowMore ? item : (window.innerWidth >= 1280 ? index < 8 : (window.innerWidth < 1024 ? index < 4 : index < 6))) && (
                                         <Flashcard key={item.id} data={item} />
                                     )}
                                 </>
                             );
                         })}
                     </div>
-                    {filteredData.length > 6 &&
+                    {filteredData.length > (window.innerWidth > 1280 ? 8 : 6) &&
                         <div className="w-full flex justify-center text-[var(--backgroundSecondary)]">
                             <div onClick={handleShowMore} className={"py-8 flex cursor-pointer"}>
                                 {isShowMore ? (
                                     <>
                                         <div className="font-semibold">Show less</div>
-                                        <MdOutlineExpandLess size={23} className="mt-0.5"/>
+                                        <MdOutlineExpandLess size={23} className="mt-0.5" />
                                     </>
                                 ) : (
                                     <>

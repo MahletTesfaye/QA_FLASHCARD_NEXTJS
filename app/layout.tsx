@@ -17,17 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="navigation">
-          <div className="w-full h-32  "></div>
-        </header>
-
-        <div className="flex flex-col md:flex-row justify-around items-center md:items-start mt-[2%]">
-          {children}
-          <div className="w-60 h-96 "></div>
-        </div>
-
-        <footer className="w-full h-32">
-          </footer>
+        {children}
       </body>
     </html>
   );
