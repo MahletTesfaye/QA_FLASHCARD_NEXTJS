@@ -80,18 +80,18 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-between gap-y-16">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between gap-y-16">
                         {shuffled?.map((item: any, index: number) => {
                             return (
                                 <>
-                                    {(isShowMore ? item : (window.innerWidth >= 1280 ? index < 8 : (window.innerWidth < 1024 ? index < 4 : index < 6))) && (
+                                    {(isShowMore ? item : (window.innerWidth < 1024 ? index < 4 : index < 6)) && (
                                         <Flashcard key={item.id} data={item} />
                                     )}
                                 </>
                             );
                         })}
                     </div>
-                    {filteredData.length > (window.innerWidth > 1280 ? 8 : 6) &&
+                    {filteredData.length > (window.innerWidth >= 1024 ? 6 : 4) &&
                         <div className="w-full flex justify-center text-[var(--backgroundSecondary)]">
                             <div onClick={handleShowMore} className={"py-8 flex cursor-pointer"}>
                                 {isShowMore ? (
