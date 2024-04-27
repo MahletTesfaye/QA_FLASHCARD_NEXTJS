@@ -46,9 +46,9 @@ export default function FlashCardContainer({ data, categoryData }: any) {
     return (
         <>
             {isLoading ? <LoadingPage /> :
-                <main className=" flex flex-col">
+                <main className="sm:w-2/3">
                     <div className="flex flex-col sm:flex-row justify-between mb-7">
-                        <div className="w-full flex flex-col gap-y-5 px-2 sm:mx-[2%]">
+                        <div className="w-full flex flex-col gap-y-5 ">
                             <div className="flex w-full justify-center sm:justify-start ">
                                 <p className="text-lg sm:text-2xl lg:text-4xl flex font-extrabold">
                                     Question & Answer<span className="text-[var(--backgroundPrimary)]">&nbsp;Flashcards</span>
@@ -80,7 +80,7 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between gap-y-16">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center sm:justify-items-start gap-x-[9%] gap-y-16">
                         {shuffled?.map((item: any, index: number) => {
                             return (
                                 <>
