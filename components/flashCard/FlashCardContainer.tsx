@@ -87,18 +87,18 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                             );
                         })}
                     </div>
-                    {filteredData.length > (window.innerWidth < 1536 ? (window.innerWidth < 1024 ? 4 : 6): 8) &&
+                    {filteredData.length > (window.innerWidth < 1536 ? (window.innerWidth < 1024 ? 4 : 6) : 8) &&
                         <div className="w-full flex justify-center text-[var(--backgroundSecondary)]">
                             <div onClick={handleShowMore} className={"py-8 flex cursor-pointer"}>
                                 {isShowMore ? (
                                     <>
                                         <div className="font-semibold">Show less</div>
-                                        <MdOutlineExpandLess size={23} className="mt-0.5" />
+                                        <MdOutlineExpandLess size={23} />
                                     </>
                                 ) : (
                                     <>
                                         <div className="font-semibold">Show more</div>
-                                        <MdOutlineExpandMore size={23} className="mt-0.5" />
+                                        <MdOutlineExpandMore size={23} />
                                     </>
                                 )}
                             </div>
