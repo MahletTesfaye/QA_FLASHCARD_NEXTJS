@@ -33,10 +33,10 @@ const Flashcard = ({ data }: FlashcardProps) => {
   };
 
   return (
-    <div className="duration-500 hover:scale-105 cursor-pointer max-xl:w-fit w-full">
+    <div className="duration-500 hover:scale-105 cursor-pointer max-sm:w-fit w-full">
       <div onClick={handleFlip} className={`w-full card relative ${isFlipped ? 'cardFlip' : ''}`}>
         <div className="w-full card-front absolute top-0 self-center">
-          <div className="bg-gray-50 shadow-md hover:shadow-lg border h-80 max-xl:w-64 w-full pt-3 px-3 rounded-2xl">
+          <div className="bg-gray-50 shadow-md hover:shadow-lg border h-80 max-sm:w-64 w-full pt-3 px-3 rounded-2xl">
             <div className="flex justify-end">
               <HiSpeakerWave size={15} onClick={speakAll} title='speaker' />
             </div>
@@ -46,7 +46,7 @@ const Flashcard = ({ data }: FlashcardProps) => {
           </div>
         </div>
         <div className="w-full card-back">
-          <div className="bg-gray-50 shadow-md hover:shadow-lg border h-80 max-xl:w-64 w-full pt-3 px-3 rounded-2xl">
+          <div className="bg-gray-50 shadow-md hover:shadow-lg border h-80 max-sm:w-64 w-full pt-3 px-3 rounded-2xl">
             <div className="flex justify-end ">
               <HiSpeakerWave size={15} onClick={speakAll} title='speaker' />
             </div>
