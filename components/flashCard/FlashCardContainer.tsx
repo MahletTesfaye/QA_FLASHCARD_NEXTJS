@@ -46,9 +46,9 @@ export default function FlashCardContainer({ data, categoryData }: any) {
     return (
         <>
             {isLoading ? <LoadingPage /> :
-                <main className="sm:w-3/4 m-12">
+                <main className="sm:w-3/4 m-[7%]">
                     <div className="flex flex-col justify-between mb-7 w-full">
-                        <h1 className="text-4xl font-extrabold mb-2">
+                        <h1 className="text-2xl sm:text-4xl font-extrabold mb-2">
                             Question & Answer <span className="text-[var(--backgroundPrimary)]">Flashcards</span>
                         </h1>
                         <div className="flex flex-col sm:flex-row justify-between gap-5 sm:gap-0 w-full">
