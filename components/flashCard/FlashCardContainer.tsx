@@ -58,7 +58,7 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                                     name="Category"
                                     title="Category"
                                     onChange={handleCategoryChange}
-                                    className="border shadow rounded-md px-2 py-1 text-sm cursor-pointer bg-transparent focus:outline-none font-semibold"
+                                    className="border shadow rounded-md px-4 py-1 text-sm cursor-pointer bg-transparent focus:outline-none font-semibold"
                                 >
                                     <option value="All Cards">All Cards</option>
                                     {categoryData &&
@@ -76,7 +76,7 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-14 justify-items-center sm:justify-items-start gap-y-16">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-14 gap-y-16">
                         {shuffled?.map((item: any, index: number) => {
                             return (
                                 <>
