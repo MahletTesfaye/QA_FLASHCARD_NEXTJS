@@ -80,13 +80,13 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center sm:justify-items-start gap-x-[9%] gap-y-16">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-center sm:justify-items-start gap-x-[9%] gap-y-16">
                         {shuffled?.map((item: any, index: number) => {
                             return (
                                 <>
-                                    {(isShowMore ? item : (window.innerWidth < 1024 ? index < 4 : index < 6)) && (
-                                        <Flashcard key={item.id} data={item} />
-                                    )}
+                                    {(isShowMore ? item : (window.innerWidth < 1536 ? (window.innerWidth < 1280 ? index < 4 : index < 6) : index < 8)) && (
+                                            <Flashcard key={item.id} data={item} />
+                                        )}
                                 </>
                             );
                         })}
