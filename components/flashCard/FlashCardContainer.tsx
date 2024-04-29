@@ -46,52 +46,48 @@ export default function FlashCardContainer({ data, categoryData }: any) {
     return (
         <>
             {isLoading ? <LoadingPage /> :
-                <main className="sm:w-2/3">
-                    <div className="flex flex-col sm:flex-row justify-between mb-7">
-                        <div className="w-full flex flex-col gap-y-5 ">
-                            <div className="flex w-full justify-center sm:justify-start ">
-                                <p className="text-lg sm:text-2xl lg:text-4xl flex font-extrabold">
-                                    Question & Answer<span className="text-[var(--backgroundPrimary)]">&nbsp;Flashcards</span>
-                                </p>
-                            </div>
-                            <div className="flex flex-col sm:flex-row justify-between gap-5 sm:gap-0 items-center w-full">
-                                <p className="">Flip or click the flashcards to view the answer.</p>
-                                <div className="flex sm:gap-5 items-center w-full sm:w-auto justify-around">
-                                    <select
-                                        name="Category"
-                                        title="Category"
-                                        onChange={handleCategoryChange}
-                                        className="border shadow rounded-md px-2 py-1 text-sm cursor-pointer bg-transparent focus:outline-none font-semibold"
-                                    >
-                                        <option value="All Cards">All Cards</option>
-                                        {categoryData &&
-                                            categoryData.map((category: string, index: any) => {
-                                                return <option key={index} value={category}>{category}</option>;
-                                            })}
-                                    </select>
+                <main className="sm:w-3/4 m-12">
+                    <div className="flex flex-col justify-between mb-7 w-full">
+                        <h1 className="text-4xl font-extrabold mb-2">
+                            Question & Answer <span className="text-[var(--backgroundPrimary)]">Flashcards</span>
+                        </h1>
+                        <div className="flex flex-col sm:flex-row justify-between gap-5 sm:gap-0 w-full">
+                            <p className="">Flip or click the flashcards to view the answer.</p>
+                            <div className="flex justify-between items-center sm:gap-5">
+                                <select
+                                    name="Category"
+                                    title="Category"
+                                    onChange={handleCategoryChange}
+                                    className="border shadow rounded-md px-2 py-1 text-sm cursor-pointer bg-transparent focus:outline-none font-semibold"
+                                >
+                                    <option value="All Cards">All Cards</option>
+                                    {categoryData &&
+                                        categoryData.map((category: string, index: any) => {
+                                            return <option key={index} value={category}>{category}</option>;
+                                        })}
+                                </select>
 
-                                    <PiShuffleAngularBold
-                                        size={18}
-                                        onClick={handleShuffle}
-                                        className="cursor-pointer hover:scale-110 align-center"
-                                        title="shuffle"
-                                    />
-                                </div>
+                                <PiShuffleAngularBold
+                                    size={18}
+                                    onClick={handleShuffle}
+                                    className="cursor-pointer hover:scale-110 align-center"
+                                    title="shuffle"
+                                />
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-center sm:justify-items-start gap-x-[9%] gap-y-16">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-20 justify-items-center sm:justify-items-start gap-y-16">
                         {shuffled?.map((item: any, index: number) => {
                             return (
                                 <>
-                                    {(isShowMore ? item : (window.innerWidth < 1536 ? (window.innerWidth < 1280 ? index < 4 : index < 6) : index < 8)) && (
-                                            <Flashcard key={item.id} data={item} />
-                                        )}
+                                    {(isShowMore ? item : (window.innerWidth < 1536 ? (window.innerWidth < 1024 ? index < 4 : index < 6) : index < 8)) && (
+                                        <Flashcard key={item.id} data={item} />
+                                    )}
                                 </>
                             );
                         })}
                     </div>
-                    {filteredData.length > (window.innerWidth >= 1024 ? 6 : 4) &&
+                    {filteredData.length > (window.innerWidth < 1536 ? (window.innerWidth < 1024 ? 4 : 6): 8) &&
                         <div className="w-full flex justify-center text-[var(--backgroundSecondary)]">
                             <div onClick={handleShowMore} className={"py-8 flex cursor-pointer"}>
                                 {isShowMore ? (
