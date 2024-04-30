@@ -76,7 +76,7 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-14 gap-y-16">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-14 gap-y-16">
                         {shuffled?.map((item: any, index: number) => {
                             return (
                                 <>
