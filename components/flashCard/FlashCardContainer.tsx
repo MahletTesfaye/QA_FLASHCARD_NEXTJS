@@ -89,7 +89,7 @@ export default function FlashCardContainer({ data, categoryData }: any) {
                     </div>
                     {filteredData.length > (window.innerWidth < 1536 ? (window.innerWidth < 1024 ? 4 : 6) : 8) &&
                         <div className="w-full flex justify-center text-[var(--backgroundSecondary)]">
-                            <div onClick={handleShowMore} className={"py-8 flex cursor-pointer"}>
+                            <div onClick={handleShowMore} className={"py-8 flex items-center cursor-pointer"}>
                                 {isShowMore ? (
                                     <>
                                         <div className="font-semibold">Show less</div>
