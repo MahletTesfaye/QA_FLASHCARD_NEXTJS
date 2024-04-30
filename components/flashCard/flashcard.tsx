@@ -43,25 +43,25 @@ const Flashcard = ({ data }: FlashcardProps) => {
     <div className="duration-500 hover:scale-105 cursor-pointer max:w-fit w-full">
       <div onClick={handleFlip} className={`w-full card relative ${isFlipped ? 'cardFlip' : ''}`}>
         <div className="w-full card-front absolute top-0 self-center">
-          <div className="bg-gray-50 shadow-md hover:shadow-lg border h-80 max:w-64 w-full pt-3 px-3 rounded-2xl">
-            <div className="flex justify-end">
+          <div className="bg-gray-50 overflow-hidden shadow-md hover:shadow-lg border h-80 max-h-80 max:w-64 w-full pt-3 px-3 rounded-2xl">
+            <div className="flex justify-end absolute right-3 top-3">
               {
                 isClicked ? <HiSpeakerWave size={15} onClick={speakAll} title='Mute' /> : <BiSolidVolumeMute size={15} onClick={speakAll} title='Unmute' />
               }
             </div>
-            <div className="flex items-center h-[75%] justify-center">
+            <div className="flex items-center h-full justify-center">
               <div className="text-center">{data.question}</div>
             </div>
           </div>
         </div>
         <div className="w-full card-back">
-          <div className="bg-gray-100 shadow-md hover:shadow-lg border h-80 max:w-64 w-full pt-3 px-3 rounded-2xl">
-            <div className="flex justify-end ">
+          <div className="bg-gray-100 overflow-hidden shadow-md hover:shadow-lg border h-80 max-h-80 max:w-64 w-full pt-3 px-3 rounded-2xl">
+            <div className="flex justify-end absolute right-3 top-3 ">
               {
                 isClicked ? <HiSpeakerWave size={15} onClick={speakAll} title='Mute' /> : <BiSolidVolumeMute size={15} onClick={speakAll} title='Unmute' />
               }
             </div>
-            <div className="flex items-center h-[80%] justify-center">
+            <div className="flex items-center h-full justify-center">
               <div className="text-center">{data.answer}</div>
             </div>
           </div>
